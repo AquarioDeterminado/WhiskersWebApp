@@ -1,0 +1,25 @@
+.gameMap{
+    display: flex;
+    height: 10vh;
+    width: 20vw;
+    flex-direction: column;
+    object-fit: none;
+}
+
+.mapRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.mapTile{
+    width: 100%;
+    height: 100%;
+}
+
+.mapTile img{
+    width: 100%;
+    height: 100%;
+}
