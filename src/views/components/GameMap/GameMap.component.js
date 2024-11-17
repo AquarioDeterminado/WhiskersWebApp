@@ -12,7 +12,7 @@ function getTileContent(info) {
                 return (Assets.mapObjects.tiles.obstacles.test);
 
             case MAP.TILE.TYPE.PLAYER:
-                return (Assets.mapObjects.panda(info.panda));
+                return (Assets.mapObjects.panda(info.panda, info.isPlayer));
 
             default:
                 return (Assets.mapObjects.tiles.floor.test);
@@ -41,11 +41,12 @@ function MapRow({tiles}) {
 }
 
 function GameMap({mapObjects}) {
-    let grid = makeMap(mapObjects);
+
+    let map = makeMap(mapObjects);
 
     return (
     <div className={styles.gameMap}>
-        {grid !== undefined ? grid.reverse().map((row) => row) : "Loading..."}
+        {map !== undefined ? map.map((row) => row) : "Loading..."}
     </div>
   );
 }
@@ -58,12 +59,11 @@ function makeMap(mapObjects) {
             //make tile
             let object = mapObjects[i];
             let x = object.position.x;
-            let y = object.position.y;
-            let newTile = <MapTile object={object} index={{x, y}} key={x + ":" + y}/>;
+            let y = MAP.GRID_HEIGHT - object.position.y - 1;
+            let newTile = <MapTile object={object} objectType={object.type} index={{x, y}} key={x + ":" + y}/>;
 
             //insert tile in row component
-            let row = grid[y];
-            row.props.tiles[x] = newTile;
+            grid[y].props.tiles[x] = newTile;
         }
     }
 
@@ -74,16 +74,16 @@ function makeMap(mapObjects) {
 function makeGrid() {
     let grid = [];
 
-    for (let currentRow = 0; currentRow < GRID_HEIGHT; currentRow++) {
+    for (let currentRow = 0; currentRow < MAP.GRID_HEIGHT; currentRow++) {
         let mapRow = [];
 
-        for (let currentColumn = 0; currentColumn < GRID_WIDTH; currentColumn++) {
+        for (let currentColumn = 0; currentColumn < MAP.GRID_WIDTH; currentColumn++) {
             mapRow.push(<MapTile index={{x: currentColumn, y: currentRow}} key={currentColumn + ":" + currentRow}/>)
         }
-        grid.push(<MapRow tiles={mapRow} key={currentRow}/>);
+        grid.unshift(<MapRow tiles={mapRow} key={MAP.GRID_HEIGHT - currentRow}/>);
     }
     return grid;
 }
 
-export default GameMap;
+export {GameMap, makeMap};
 

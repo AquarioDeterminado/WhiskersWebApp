@@ -31,11 +31,11 @@ const Assets = {
                 test: (<img alt="" src={obstacleDefault} style={{zIndex: 0}}></img>)
             }
         },
-        panda: (panda) => {
+        panda: (panda, isPlayer) => {
             if (panda !== undefined)
-                return (<img alt="" src={panda} style={{zIndex: 1}}></img>);
+                return (<img alt="" src={panda} style={{zIndex: 1}} id={isPlayer? "player" : "opponent"} ></img>);
             else
-                return (<img alt="" src={defaultPanda} style={{zIndex: 1}}></img>);
+                return (<img alt="" src={defaultPanda} style={{zIndex: 1}} id={isPlayer? "player" : "opponent"}></img>);
         }
     }
 
