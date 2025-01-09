@@ -1,6 +1,6 @@
 import styles from "./GameMap.component.module.css";
 import Assets from "../../../configs/AssetHandler";
-import {MAP} from "../../../configs/Constants";
+import {MAP} from "../../../utils/Constants";
 
 function getTileContent(info) {
     if(info !== undefined)

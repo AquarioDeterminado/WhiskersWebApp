@@ -1,9 +1,9 @@
 .gameMap{
     display: flex;
-    height: 10vh;
-    width: 20vw;
+    width: 40vw;
+    height: 3.5vh;
     flex-direction: column;
-    object-fit: none;
+    object-fit: contain;
 }
 
 .mapRow{

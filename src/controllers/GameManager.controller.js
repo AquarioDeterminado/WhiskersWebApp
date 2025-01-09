@@ -16,7 +16,7 @@ function initMapObjects(){
 }
 
 function endGame() {
-    console.log(mapObjects);
+    initMapObjects();
 }
 
-export {GameManager, initMapObjects,endGame};
+export {GameManager, initMapObjects, endGame};

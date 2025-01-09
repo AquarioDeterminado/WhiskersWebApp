@@ -9,10 +9,9 @@ ENV NODE_ENV production
 WORKDIR /usr/src/app
 
 COPY package.json package.json
-COPY package-lock.json package-lock.json
 
 # Install npm dependencies without using the dev packages
-RUN npm ci --omit=dev
+RUN npm i --omit=dev
 
 # Run the application as a non-root user.
 USER root

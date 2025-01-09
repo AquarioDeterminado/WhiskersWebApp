@@ -2,13 +2,29 @@
 import defaultPanda from '../assets/sprites/pandas/pandaDefault.png';
 
 //Floor
-import floorDefault from '../assets/sprites/tiles/floor.default.png';
+import floorDefault from '../assets/sprites/tiles/floor/floor.grass.png';
 
 //Obstacles
-import obstacleDefault from '../assets/sprites/tiles/obstacle.default.png';
+import obstacleDefault from '../assets/sprites/tiles/obstacles/obstacle.water.png';
+
+import Logo from '../assets/logo/logo.png';
+
+import LandingPageBackground from '../assets/backgrounds/landingPageBackground.png';
+import GameBackground from '../assets/backgrounds/gameBackground.png';
+import LoIngBackground from '../assets/backgrounds/loginBackground.png';
+import SignUpBackground from '../assets/backgrounds/signupBackground.png';
 
 
 const Assets = {
+    backgrounds: {
+        LandingPage: LandingPageBackground,
+        Game: GameBackground,
+        LoIng: LoIngBackground,
+        SignUp:SignUpBackground
+    },
+    logos: {
+        default: Logo
+    },
     sprites: {
         tiles: {
             floor: {

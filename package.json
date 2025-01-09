@@ -4,6 +4,9 @@
   "private": "true",
   "dependencies": {
     "@testing-library/react": "^16.0.1",
+    "browserify-aes": "^1.2.0",
+    "buffer": "^6.0.3",
+    "crypto-js": "^4.2.0",
     "lodash.debounce": "^4.0.8",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
@@ -13,7 +16,9 @@
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
     "react-use-websocket": "^4.8.1",
+    "socket.io-client": "^4.8.1",
     "sort-by": "^1.2.0",
+    "stream": "^0.0.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

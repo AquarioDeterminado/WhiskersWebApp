@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {DIRECTIONS, KEYCODES, MAP} from "../configs/Constants";
+import {DIRECTIONS, KEYCODES, MAP} from "../utils/Constants";
 import debounce from 'lodash.debounce';
 import {endGame} from "./GameManager.controller";
 
@@ -18,16 +18,20 @@ function PlayerControlsController({_mapObjects, _setMapObjects}) {
 
 function handleKeyDown(event) {
     switch (event.keyCode) {
-        case KEYCODES.A || KEYCODES.ARROWLEFT:
+        case KEYCODES.ARROWLEFT:
+        case KEYCODES.A:
             movePlayer(DIRECTIONS.LEFT)
             break;
-        case KEYCODES.W || KEYCODES.ARROWUP:
+        case KEYCODES.ARROWUP:
+        case KEYCODES.W:
             movePlayer(DIRECTIONS.UP)
             break;
-        case KEYCODES.D || KEYCODES.ARROWRIGHT:
+        case KEYCODES.ARROWRIGHT:
+        case KEYCODES.D:
             movePlayer(DIRECTIONS.RIGHT)
             break;
-        case KEYCODES.S || KEYCODES.ARROWDOWN:
+        case KEYCODES.ARROWDOWN:
+        case KEYCODES.S:
             movePlayer(DIRECTIONS.DOWN)
             break;
         default:
@@ -82,7 +86,8 @@ function changePosition(oldPosition, newPosition) {
     if (!ranIntoObstacle(newPosition)) {
         player.position = newPosition;
     } else {
-        console.log("ran into obstacle");
+        endGame();
+        return;
     }
 
     setMapObjects([...mapObjects,  player]);

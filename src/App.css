@@ -1,4 +1,13 @@
-.App {
+body {
+    font-family: balneario, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+
+
+
+App {
     text-align: center;
 }
 
