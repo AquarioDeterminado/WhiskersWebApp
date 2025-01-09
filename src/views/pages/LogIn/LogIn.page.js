@@ -63,11 +63,12 @@ function Signin () {
         logInInfo.password = ciphertext.toString();
 
         sendLogInRequest(logInInfo, (data, status) => {
-            if (status !== 200)
+            if (status !== 200) {
                 alert(data.Mensagem)
-            else
+            } else {
                 keepAuthInfo(logInInfo.username, data.token)
                 navigate(ROUTES.MAINPAGE)
+            }
         });
     }
 

@@ -31,7 +31,6 @@ function sendLogInRequest(logInInfo, after) {
     var status = 0;
     fetch(request)
         .then((res) => {
-            console.log(res.headers.get('Authorization'));
             status = res.status;
             return res.json()
         })
