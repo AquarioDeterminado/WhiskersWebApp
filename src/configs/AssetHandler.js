@@ -13,6 +13,7 @@ import LandingPageBackground from '../assets/backgrounds/landingPageBackground.p
 import GameBackground from '../assets/backgrounds/gameBackground.png';
 import LoIngBackground from '../assets/backgrounds/loginBackground.png';
 import SignUpBackground from '../assets/backgrounds/signupBackground.png';
+import HomepageBackground from '../assets/backgrounds/homepageBackground.png';
 
 
 const Assets = {
@@ -20,7 +21,8 @@ const Assets = {
         LandingPage: LandingPageBackground,
         Game: GameBackground,
         LoIng: LoIngBackground,
-        SignUp:SignUpBackground
+        SignUp:SignUpBackground,
+        HomePage: HomepageBackground
     },
     logos: {
         default: Logo

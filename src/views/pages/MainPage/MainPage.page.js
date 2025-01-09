@@ -6,6 +6,7 @@ import {APPSTATE, GAMESERVER} from "../../../utils/Constants";
 import {io} from "socket.io-client";
 import styles from "./MainPage.module.css";
 import {getAuthInfo} from "../../../utils/Utils";
+import Assets from "../../../configs/AssetHandler";
 
 
 let socket;
@@ -27,11 +28,12 @@ function MainPage() {
 
         socket.on('status', function (data) {
             console.log('Received news from server:', data);
+            let interval = undefined;
 
             if (data.content === 'O jogo vai começar! Estás preparado!') {
                 let a = 0;
                 //while (true)
-                setInterval(() => {
+                interval = setInterval(() => {
 
                     let random = Math.floor(Math.random() * 8000) / 1000;
                     if (random > 0.01 && random < 0.99)
@@ -58,11 +60,12 @@ function MainPage() {
                     console.log("Ping " + a);
                 }, 1000 / 4);
             }
-            else if (data.content.includes("Kick") || data.content.includes("Ban"))
+            else if (data.content === "Kick" || data.content === "Ban")
                 process.exit();
-            else if (data.content.includes("Game Over")) {
+            else if (data.content ==="GAME OVER, Você morreu!") {
                 console.log("Game Over");
-                process.exit();
+                if (interval !== undefined)
+                    clearInterval(interval);
             }
         });
 
@@ -96,23 +99,26 @@ function MainPage() {
     }
 
     return (
-        <div className={styles.MainPage}>
-            <div className={styles.Title}>Red Whiskers</div>
-            <div className={styles.buttonLine}>
-                <button onClick={startSinglePlayerGame} className={styles.button} >SinglePlayer Game</button>
-                <button onClick={startGame} className={styles.button}>Start Lobby</button>
-                <button onClick={addBot} className={styles.button}>Add Bot</button>
+        <>
+            <img src={Assets.backgrounds.HomePage} className={styles.backgroundImg}/>
+            <div className={styles.MainPage}>
+                <div className={styles.Title}>Red Whiskers</div>
+                <div className={styles.buttonLine}>
+                    <button onClick={startSinglePlayerGame} className={styles.button} >SinglePlayer Game</button>
+                    <button onClick={startGame} className={styles.button}>Start Lobby</button>
+                    <button onClick={addBot} className={styles.button}>Add Bot</button>
+                </div>
+                <div className={styles.GameMap}>
+
+                    <GameManager _mapObjects={mapObjects} _setMapObjects={setMapObjects}/>
+
+                    <PlayerControlsController _mapObjects={mapObjects} _setMapObjects={setMapObjects}/>
+
+                    <GameMap mapObjects={mapObjects}/>
+
+                </div>
             </div>
-            <div className={styles.GameMap}>
-
-                <GameManager _mapObjects={mapObjects} _setMapObjects={setMapObjects}/>
-
-                <PlayerControlsController _mapObjects={mapObjects} _setMapObjects={setMapObjects}/>
-
-                <GameMap mapObjects={mapObjects}/>
-
-            </div>
-        </div>
+        </>
     );
 }
 
