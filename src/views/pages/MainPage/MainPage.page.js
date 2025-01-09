@@ -5,6 +5,7 @@ import {GameManager, initMapObjects} from "../../../controllers/GameManager.cont
 import {APPSTATE, GAMESERVER} from "../../../utils/Constants";
 import {io} from "socket.io-client";
 import styles from "./MainPage.module.css";
+import {getAuthInfo} from "../../../utils/Utils";
 
 let socket;
 
@@ -26,7 +27,8 @@ function MainPage() {
         });
 
         if (appState === APPSTATE.LOAD) {
-            socket.emit('NewPlayer', {text: {Username: "pessoa"}});
+            let authInfo = getAuthInfo()
+            socket.emit('NewPlayer', {text: `{"Username": "${authInfo.username}", "token":"${authInfo.token}"}`})
             setAppState(APPSTATE.ONMENU);
         }
 
@@ -37,8 +39,8 @@ function MainPage() {
     }, []);
 
     function startGame() {
-        socket.emit('CreateLobby', {Username: "pessoa", Type: "Singleplayer"})
-        console.log(socket)
+        let authInfo = getAuthInfo()
+        socket.emit('CreateLobby', {text: `{"Username": "${authInfo.username}", "token":"${authInfo.token}", "Type": "Multiplayer"}`})
         setAppState(APPSTATE.GAMESTARTED)
     }
 

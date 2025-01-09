@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import CryptoJS from "crypto-js";
 import {sendLogInRequest, sendSingUpRequest} from "../../../controllers/Player.controller";
 import Assets from "../../../configs/AssetHandler";
+import {keepAuthInfo} from "../../../utils/Utils";
 
 function Button({value}) {
     return (
@@ -65,6 +66,7 @@ function Signin () {
             if (status !== 200)
                 alert(data.Mensagem)
             else
+                keepAuthInfo(logInInfo.username, data.token)
                 navigate(ROUTES.MAINPAGE)
         });
     }
