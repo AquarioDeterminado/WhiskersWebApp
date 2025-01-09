@@ -1,5 +1,5 @@
 //Pandas
-import defaultPanda from '../assets/sprites/pandas/pandaDefault.png';
+import defaultPanda from '../assets/sprites/pandas/pandaCute.png';
 
 //Floor
 import floorDefault from '../assets/sprites/tiles/floor/floor.grass.png';

@@ -99,8 +99,8 @@ function MainPage() {
         <div className={styles.MainPage}>
             <div className={styles.Title}>Red Whiskers</div>
             <div className={styles.buttonLine}>
-                <button onClick={startGame} className={styles.button}>Start Game</button>
-                <button onClick={startSinglePlayerGame} className={styles.button} >Start SinglePLayer Game</button>
+                <button onClick={startSinglePlayerGame} className={styles.button} >SinglePlayer Game</button>
+                <button onClick={startGame} className={styles.button}>Start Lobby</button>
                 <button onClick={addBot} className={styles.button}>Add Bot</button>
             </div>
             <div className={styles.GameMap}>
