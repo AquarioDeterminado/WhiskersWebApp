@@ -7,7 +7,6 @@
 **/.idea
 **/.classpath
 **/.dockerignore
-**/.env
 **/.git
 **/.gitignore
 **/.project
@@ -31,5 +30,6 @@
 **/values.dev.yaml
 **/build
 **/dist
+node_modules/
 LICENSE
 README.md
